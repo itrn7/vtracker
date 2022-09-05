@@ -1,0 +1,60 @@
+#rgrid {
+    position: absolute;
+    height: 800px;
+    width: 800px;
+    margin-left: 100px;
+    border: solid black 1px;
+    background-image: url('20x20grid.png');
+    background-size: 800px 800px;
+    float: left
+}
+
+/*
+#pgrid {
+    height: 500px;
+    width: 500px;
+    margin: 10px;
+    border: solid black 1px;
+    background-image: url('20x20grid.png');
+    background-size: 500px 500px;
+    float: left
+}*/
+
+.point {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: blue;
+    border-radius: 5px;
+}
+
+#player {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 5px;
+}
+
+#p1 {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 5px;
+}
+
+#scoredisplay {
+    width: 350px;
+    float: left;
+}
+
+#maxscore {
+    width: 200px;
+    float: left;
+}
+
+#details {
+    width: 800px;
+    float: left;
+}
