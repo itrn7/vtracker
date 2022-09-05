@@ -8,7 +8,7 @@ changed by editing the code. The task is to hover your cursor in a way that will
 to the weighted midpoint of the 2 reference points. Weighted, since the size of the points also determines which point has more "attractive"
 influence on the solution point. You can see how this works by clicking "v" to see the solution point(also in green). Scoring depends on the distance between the calculated solution green point and your cursor's green point. If you do everything perfectly, you will score 10% more than the "maximum score"
 but that is highly unlikely. Based on reaction timing and natural coordination abilities, I'd say an 85% score(score/max score) is very successful, and you should move on to more reference and/or ignored points. Once you get to 4+ reference points, you will notice that statistically it is unlikely
-that the solution point/range area will lie far off the center of the grid, and this makes it easier for you to gain more points — this is an issue I haven't addressed yet but will in the future.
+that the solution point/range area will lie far off the center of the grid, and this makes it easier for you to gain more points — this is an issue I haven't addressed yet but will in the future(one idea is to put more weight on the size when calculating the solution point position)
 
 Lmk if you have any suggestions! Thanks :)
 
