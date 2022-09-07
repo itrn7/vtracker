@@ -8,12 +8,33 @@
 <body>
     <h2 id="scoredisplay">SCORE: </h2>
     <h2 id="maxscore">MaxScore: </h2>
-    <h2 id="details">v: show/hide solution point. spacerbar: start. enterkey: reload</h2>
+    <h2 id="timedisplay">Time: </h2>
     <br> <br> <br>
+    
     <div id="rgrid">
         <div id="player"></div>
         <div id="p1"></div>
     </div>
+
+    <div id="pgrid">
+        <h3 id="details">v: show/hide answer. space: start. enter: update settings & page.</h3>
+        <h3>p: pause.</h3>
+        <p>
+            <label for="numr">Num reference points(0,1,2,3...): </label>
+            <input type="text" id="ui_numr" value="2">
+        </p>
+        <p>
+            <label for="numi">Num distraction points(0,1,2,3...): </label>
+            <input type="text" id="ui_numi" value="0">
+        </p>
+        <p>
+            <label for="ipointcolor">Distraction point color red?(yes/no): </label>
+            <input type="text" id="ipointcolor" value="yes">
+        </p>
+
+    </div>
+    
+
     <!-- <div id="pgrid"></div> -->
 
     
