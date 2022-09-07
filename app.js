@@ -21,7 +21,7 @@ const player = document.querySelector('#player')
 const player_position = [0, 0]
 const grid = document.querySelector('#rgrid')
 
-const numr = 2
+const numr = 10
 const numi = 0
 const center = [250, 250]
 const maxspeed = 2.5
