@@ -32,19 +32,31 @@
 
 #player {
     position: absolute;
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
     background-color: green;
-    border-radius: 10px;
+    border-radius: 20px;
     opacity: 0.5;
+}
+
+#playercenter {
+    position: relative;
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 5px;
+    top: 15px;
+    left: 15px;
+    opacity: 1;
 }
 
 #p1 {
     position: absolute;
     height: 10px;
     width: 10px;
-    background-color: green;
-    border-radius: 5px;
+    background-color: rgb(0,0,0);
+    border-radius: 7px;
+    border: solid black 2px;
 }
 
 #scoredisplay {

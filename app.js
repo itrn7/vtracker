@@ -1,7 +1,7 @@
 /* 
 Stuff to add:
     -interface for player to modify values of numr, numi, maxspeed, sizeupperbound, sizelowerbound, default_sizeV, acceleration_negative_constant, stoptime_s
-    -
+    -feedback that helps the brain learn to perform closer to perfect
     
 */
 
@@ -36,12 +36,15 @@ let gametimer
 let starttime_s = 0
 const time = document.querySelector("#timedisplay")
 let ipointcolor = "yes"
+let p1color = [0, 0, 0]
+let feedback = "yes"
 
 
 //settings:
 const ui_numr = document.querySelector("#ui_numr")
 const ui_numi = document.querySelector("#ui_numi")
 const ui_ipointcolor = document.querySelector("#ipointcolor")
+const ui_feedback = document.querySelector('#feedback')
 
 //classes
 class point {
@@ -86,10 +89,11 @@ player.style.visibility = answervisibility
 //p1 follows cursor
 function p1followcursor(e) {
     //console.log("follow")
-    p1_position[0] = e.pageX - 115 - 400
-    p1_position[1] = -e.pageY + 865 - 400
-    p1.style.left = p1_position[0] + 400 + 'px'
-    p1.style.bottom = p1_position[1] + 400 + 'px'
+    p1_position[0] = e.pageX - 515
+    p1_position[1] = -e.pageY + 465
+    p1.style.left = p1_position[0] + 400 - 6 + 'px'
+    p1.style.bottom = p1_position[1] + 400 + - 6 + 'px'
+    console.log(p1_position)
 }
 
 //answer visibility control
@@ -134,12 +138,14 @@ function start(e) {
     if (e.key == "p") {
         clearInterval(timerID)
         clearInterval(gametimer)
+        p1.style.backgroundColor = 'black'
         return
     }
     if (e.keyCode == 13) {
         update_settings() 
         create_points()
         update_player_position()
+        p1.style.backgroundColor = 'black'
         starttime_s = 0
         time.innerHTML = "Time: " + starttime_s + 's'
         score = 0
@@ -168,6 +174,7 @@ function update_settings(e) {
     numr = parseInt(ui_numr.value)
     numi = parseInt(ui_numi.value)
     ipointcolor = (ui_ipointcolor.value)
+    feedback = (ui_feedback.value)
 }
 
 function clearpoints() {
@@ -246,12 +253,27 @@ function score_calculation() {
     //console.log(p1_position[0], p1_position[1])
     //max distance at which score increases per 20ms: 30px
     let l = Math.sqrt(((p1_position[0]-player_position[0])**2) + ((p1_position[1]-player_position[1])**2))
+    console.log(l)
     if (1 - (l)/30 + 0.1 >= 0) {
-        score += 1 - (l)/30 + 0.1
+        score += 1 - (l)/30
     }
     maxscore += 1
     scoredisplay.innerHTML = "SCORE: " + score
     maxscoredisplay.innerHTML = "Max Score: " + maxscore
+
+    //this is where we can update real time p1 color-based feedback that could help learn how to do things more perfectly through practice through immediate feedback
+    if (feedback == "yes") {
+        if (l > 30) {
+            p1color[0] = 255
+            p1color[2] = 0
+        } if (l < 30) {
+            p1color[0] =  Math.floor(255 - ((1-(l/30)) * 255))
+            p1color[1] = Math.floor(0 + ((1-(l/30)) * 255))
+        }
+        p1.style.backgroundColor = 'rgb('+p1color[0]+', '+p1color[1]+', '+p1color[2]+')'
+        //p1.style.backgroundColor = 'rgb(100, 100, 100)'
+    }
+    
 }
 
 //position average integration, as a function of size & position of each reference point
@@ -272,8 +294,9 @@ function update_player_position() {
     //finish integration
 
     //update visual element
-    player.style.left = player_position[0] - 10 + 400 + 'px'
-    player.style.bottom = player_position[1] - 10 + 400 + 'px'
+    player.style.left = player_position[0] - 20 + 400 + 'px'
+    player.style.bottom = player_position[1] - 20 + 400 + 'px'
+    console.log(player_position)
 }
 
 //normalize a 2D vector
